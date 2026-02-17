@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tawqi
+    username: tawqi
+    password: tawqi
+  cloud:
+    vault:
+      uri: http://localhost:8200
+      token: dev-root-token
+      authentication: TOKEN
+
+logging:
+  level:
+    id.artivisi.tawqi: DEBUG
+    org.springframework.vault: DEBUG
+
+tawqi:
+  storage:
+    path: ./data/documents

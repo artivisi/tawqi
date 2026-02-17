@@ -1,0 +1,9 @@
+spring:
+  flyway:
+    enabled: true
+
+tawqi:
+  storage:
+    path: ${java.io.tmpdir}/tawqi-test-documents
+  signing:
+    qr-base-url: https://verify.test.local/doc/

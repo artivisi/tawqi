@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: tawqi
+  threads:
+    virtual:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+
+tawqi:
+  storage:
+    type: local
+  vault:
+    pki-mount: pki-campus
+    transit-mount: transit
+    transit-key-prefix: signer-
+  signing:
+    batch-pool-size: 4
+    qr-base-url: https://verify.example.ac.id/doc/
+    document-id-prefix: TQ
+  webhook:
+    timeout-seconds: 10
+    retry-count: 3
