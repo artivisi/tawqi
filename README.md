@@ -12,17 +12,12 @@ Single Spring Boot application serving three logical components:
 
 External dependency: **HashiCorp Vault OSS** for PKI engine, Transit signing, and secrets management.
 
-```
-┌─────────────────┐     REST API      ┌──────────────────────────────────────┐     Vault API    ┌────────────────┐
-│  Campus Apps     │ ──────────────►   │          Tawqi (Spring Boot)         │ ──────────────►  │ HashiCorp Vault│
-│  (SMILE, Finance,│  ◄── Webhook ──   │                                      │                  │ PKI + Transit  │
-│   HRIS, etc.)    │                   │  Service │ Portal │ Verify            │                  │ KV + Database  │
-└─────────────────┘                   └──────────┬───────────────────────────┘                  └────────────────┘
-                                                  │
-                                        ┌─────────┴─────────┐
-                                        │  PostgreSQL 17     │
-                                        │  + File Storage    │
-                                        └───────────────────┘
+```mermaid
+graph LR
+    A["Campus Apps<br/>(SMILE, Finance,<br/>HRIS, etc.)"] -- "REST API" --> B
+    B -- "Webhook" --> A
+    B["Tawqi (Spring Boot)<br/>Service | Portal | Verify"] -- "Vault API" --> C["HashiCorp Vault<br/>PKI + Transit<br/>KV + Database"]
+    B --> D["PostgreSQL 17<br/>+ File Storage"]
 ```
 
 ## Tech Stack
